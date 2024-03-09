@@ -39,7 +39,7 @@ exports.create = async (req, res, next) => {
 	}
 
 	try {
-		const contactService = new contactService(MongoDB.client);
+		const contactService = new ContactService(MongoDB.client);
 		const document = await contactService.create(req.body);
 		return res.send(document);
 	} catch (error) {
@@ -105,7 +105,7 @@ exports.create = async (req, res, next) => {
 	
 	exports.delete = async (req, res, next) => {
 		try {
-			const contactService = new contactService(MongoDB.client);
+			const contactService = new ContactService(MongoDB.client);
 			const document = await contactService.delete(req.params.id);
 			if(!document){
 				return next(new ApiError(404, "Contact not found"));
